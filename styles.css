@@ -48,7 +48,7 @@ input[type="number"] {
   margin: 3px;
 }
 
-button {
+#expense-form button {
   padding: 10px;
   background-color: #e99a41;
   border: none;
@@ -58,8 +58,22 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
+#expense-form button:hover {
   background-color: #ee850d;
+}
+
+.deleteBtn {
+  padding: 10px;
+  background-color: #f04f4f;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deleteBtn:hover {
+  background-color: #fa0505;
 }
 
 #expense-list {
