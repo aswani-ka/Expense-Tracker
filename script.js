@@ -42,4 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function calculateTotal() {
+    return expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  }
 });
