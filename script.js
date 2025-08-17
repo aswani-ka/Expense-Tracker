@@ -36,11 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = document.createElement("li");
       li.innerHTML = `
       ${expense.name} - $${expense.amount}
-      <button data-id = "${expense.id}"> Delete </button>
+      <button class="deleteBtn" data-id = "${expense.id}"> Delete </button>
       `;
+
       expenseList.appendChild(li);
-      console.log(expenseList);
-      
     });
   }
 
