@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       expenses.push(newExpense);
       renderExpenses();
+      updateTotal();
 
-      expenseAmountInput.value = "";
+      expenseNameInput.value = "";
       expenseAmountInput.value = "";
     }
   });
@@ -44,5 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function calculateTotal() {
     return expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  }
+
+  function updateTotal() {
+    totalAmount = calculateTotal();
+    totalAmountDisplay.textContent = totalAmount.toFixed(2);
   }
 });
