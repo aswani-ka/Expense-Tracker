@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalAmountDisplay = document.getElementById("total-amount");
 
   let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  let totalAmount = calculateTotal();
   renderExpenses();
 
   expenseForm.addEventListener("submit", (e) => {
@@ -36,7 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = document.createElement("li");
       li.innerHTML = `
       ${expense.name} - $${expense.amount}
-      <button class="deleteBtn" data-id = "${expense.id}"> Delete </button>
+      <div class="grouped-button">
+        <button class="editBtn" data-id = "${expense.id}"> Edit </button>
+        <button class="deleteBtn" data-id = "${expense.id}"> Delete </button>
+      </div>
       `;
 
       expenseList.appendChild(li);
@@ -53,14 +57,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   expenseList.addEventListener("click", (e) => {
-    if(e.target.tagName === 'BUTTON') {
-      const expenseId = parseInt(e.target.getAttribute("data-id"));
+    const expenseId = parseInt(e.target.getAttribute("data-id"));
+
+    if(e.target.classList.contains("deleteBtn")) {
       expenses = expenses.filter((expense) => expense.id !== expenseId);
       saveExpensesToLocal();
       renderExpenses();
       updateTotal();
     }
+
+    if(e.target.classList.contains("editBtn")) {
+      
+      expenseToEdit = expenses.find((expense) => expense.id === expenseId);
+
+      if(expenseToEdit) {
+        expenseNameInput.value = expenseToEdit.name;
+        expenseAmountInput.value = expenseToEdit.amount;
+
+        expenses = expenses.filter((expense) => expense.id !== expenseId);
+        saveExpensesToLocal();
+        renderExpenses();
+        updateTotal();
+      }
+    }
   });
+
 
   function saveExpensesToLocal() {
     localStorage.setItem("expenses", JSON.stringify(expenses));
