@@ -76,6 +76,20 @@ input[type="number"] {
   background-color: #fa0505;
 }
 
+.editBtn {
+  padding: 10px;
+  background-color: #4f8ff0;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editBtn:hover {
+  background-color: #2877ee;
+}
+
 #expense-list {
   list-style-type: none;
   padding: 0;
@@ -89,6 +103,10 @@ input[type="number"] {
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+}
+
+.actions {
+  display: flex;
 }
 
 #total {
