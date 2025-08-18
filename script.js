@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
   let totalAmount = calculateTotal();
+  
   renderExpenses();
+  updateTotal();
 
   expenseForm.addEventListener("submit", (e) => {
     e.preventDefault();
